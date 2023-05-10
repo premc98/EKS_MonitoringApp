@@ -24,7 +24,7 @@ Kubernetes Deployments & Service YAMLs using the image on ECR & hosted it on EKS
 
 - aws configure (ren it and provide access tokens for python boto3 module to make changes)
 - aws iam list-users
-- creat a user with the following permissions
+- create a user with the following permissions
   ![Alt text](./IAMUserPolicies.png)
 
 ## Create a repository in ECR using python boto3 in ecr.py
@@ -33,4 +33,11 @@ Kubernetes Deployments & Service YAMLs using the image on ECR & hosted it on EKS
 - set the ecr client
 - call the create_repository method
 - run the ecr.py using pyhon3 ecr.py
-- print the uri from the response - 910099015354.dkr.ecr.us-east-1.amazonaws.com/flask_monitoring_app_image
+- print the uri from the response - 910099015354.dkr.ecr.us-east-1.amazonaws.com/flask_monitoring_app_repo
+
+## Push local docker image into ECR repository flask_monitoring_app_repo
+
+- aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 910099015354.dkr.ecr.us-east-1.amazonaws.com
+- docker build -t flask_monitoring_app_repo .
+- docker tag flask_monitoring_app_repo:latest 910099015354.dkr.ecr.us-east-1.amazonaws.com/flask_monitoring_app_repo:latest
+- docker push 910099015354.dkr.ecr.us-east-1.amazonaws.com/flask_monitoring_app_repo:latest
