@@ -14,4 +14,4 @@ def monitoring_app():
     return render_template("index.html", cpu_metric=cpu_metric, mem_metric=mem_metric, message=Message )
 
 if __name__=='__main__':
-    app.run(debug=True, host = '127.0.0.1', port = 5010)
+    app.run()
