@@ -19,3 +19,18 @@ Kubernetes Deployments & Service YAMLs using the image on ECR & hosted it on EKS
 - to restart a stopped container - docker start FlaskAppContainer
 - to remove a container that was created - docker rm FlaskAppContainer
 - to remove the image that was used to create the container - docker rmi my-flask-app:v1
+
+## AWS CLI
+
+- aws configure (ren it and provide access tokens for python boto3 module to make changes)
+- aws iam list-users
+- creat a user with the following permissions
+  ![Alt text](./IAMUserPolicies.png)
+
+## Create a repository in ECR using python boto3 in ecr.py
+
+- import the boto3 module
+- set the ecr client
+- call the create_repository method
+- run the ecr.py using pyhon3 ecr.py
+- print the uri from the response - 910099015354.dkr.ecr.us-east-1.amazonaws.com/flask_monitoring_app_image
