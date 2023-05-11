@@ -27,6 +27,9 @@ Kubernetes Deployments & Service YAMLs using the image on ECR & hosted it on EKS
 - create a user with the following permissions
   ![Alt text](./IAMUserPolicies.png)
 
+- The custom policy has rules for managing EKS clusters like "eks:\*"
+- Create service roles for the cluster and the node separately using the root user
+
 ## Create a repository in ECR using python boto3 in ecr.py
 
 - import the boto3 module
@@ -41,3 +44,9 @@ Kubernetes Deployments & Service YAMLs using the image on ECR & hosted it on EKS
 - docker build -t flask_monitoring_app_repo .
 - docker tag flask_monitoring_app_repo:latest 910099015354.dkr.ecr.us-east-1.amazonaws.com/flask_monitoring_app_repo:latest
 - docker push 910099015354.dkr.ecr.us-east-1.amazonaws.com/flask_monitoring_app_repo:latest
+
+## Create EKS cluster on AWS with the new user that was created
+
+- after cluster becomes active, create a node group with 2 nodes using t2.micro
+
+## Create Kubernetes deployment and service on VS code using boto3 python
