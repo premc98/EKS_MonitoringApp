@@ -58,3 +58,8 @@ Kubernetes Deployments & Service YAMLs using the image on ECR & hosted it on EKS
 - check if deployment is created - kubectl get deployments -n default, kubectl get svc -n default, kubectl get pods -w, kubectl describe pods monitoring-flask-app-74c846c996-fgrhb -n default
 - port forward to your localmachine using the following command - kubectl port-forward svc/monitoring-flask-service 5010:5010
 - Now go to localhost:5010 on your host browser to check if the app is running
+
+## Debugging commands
+
+- docker inspect --format '{{.Architecture}}' my-flask-image:v1
+- kubectl logs monitoring-flask-app-74c846c996-fgrhb
