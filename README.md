@@ -50,3 +50,11 @@ Kubernetes Deployments & Service YAMLs using the image on ECR & hosted it on EKS
 - after cluster becomes active, create a node group with 2 nodes using t2.micro
 
 ## Create Kubernetes deployment and service on VS code using boto3 python
+
+- Update the local kubernetes config file with the eks cluster using this command - aws eks update-kubeconfig --name clustername
+- Set the context to use the eks cluster context using kubectx
+- create eks.py and define deployments and the service and provide the uri to the image in ecr
+- pyhton3 eks.py
+- check if deployment is created - kubectl get deployments -n default, kubectl get svc -n default, kubectl get pods -w, kubectl describe pods monitoring-flask-app-74c846c996-fgrhb -n default
+- port forward to your localmachine using the following command - kubectl port-forward svc/monitoring-flask-service 5010:5010
+- Now go to localhost:5010 on your host browser to check if the app is running
